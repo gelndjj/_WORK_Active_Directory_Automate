@@ -60,7 +60,7 @@
 This application came up after being fed up of manually creating new AD users every single week in companies I work with. 
 </br> 
 </br>
-<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/main_windows.png" alt="Screenshot" width="460" height="430">
+<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/main_windows.png" alt="Screenshot" width="660" height="430">
 </br>
 </br>
 Basically, the application creates SQL databases where the users information are stored. You can edit, modify or create user information to then synchronize to Active Directory.
