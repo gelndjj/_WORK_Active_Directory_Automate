@@ -81,6 +81,7 @@ The main goal of this project is to save up time and automate the process of han
 <a href="https://customtkinter.tomschimansky.com">
 <img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/ctk_icon.png" alt="Icon" width="32" height="32">
 </a>
+&nbsp
 <a href="https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.3">
 <img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/ps_icon.png" alt="Icon" width="32" height="32">
 </a>
