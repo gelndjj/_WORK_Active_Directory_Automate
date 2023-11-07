@@ -55,7 +55,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/image_1.png" alt="Logo" width="128" height="128">
+<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/image.png" alt="Logo" width="128" height="128">
 </br>
 This application came up after being fed up of manually creating new AD users every single week in companies I work with. 
 </br> 
