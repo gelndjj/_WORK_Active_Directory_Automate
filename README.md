@@ -57,8 +57,7 @@
 <div align="center">
 <img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/image_1.png" alt="Logo" width="128" height="128">
 </br>
-This application came up after being fed up of manually creating new AD users every single week in companies I work with. 
-</br> 
+Active Directory Automate is a sophisticated application designed to streamline the process of user management within Active Directory (AD). Born out of the necessity to eliminate the repetitive and manual task of creating AD users, this tool stands as a testament to the power of automation in the IT administration field.</br> 
 </br>
 <img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/main.png" alt="Screenshot" width="927" height="852">
 </br>
@@ -88,7 +87,7 @@ The main goal of this project is to save up time and automate the process of han
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
-## Usage Documentation
+# Usage Documentation
 
 ## Table of Contents
 - [Record Management](#record-management)
@@ -139,8 +138,8 @@ The main goal of this project is to save up time and automate the process of han
 - **Usage**: Click this if you need to modify the PowerShell script parameters or behavior.
 
 ### Change User Password
-- **Description**: Initiates a prompt to change the password for a user in Active Directory.
-- **Usage**: Select a user and click this to begin the password change process.
+- **Description**: Initiates a prompt to change the password for a single or multiple selected users from the database then synchronize the changes to Active Directory.
+- **Usage**: Select one or many user(s) and click this to begin the password change process.
 
 ## Python Commands
 
