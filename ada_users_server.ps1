@@ -101,15 +101,33 @@ while ($DataReader.Read()) {
             }
         }
 
-        # If there are changes, apply them
-        if ($ModifiedFields.Count -gt 0) {
-            try {
-                Set-ADUser -Instance $ADUser -ErrorAction Stop
-                Write-Host "User with CustomIdentifier '$CustomIdentifier' updated fields: $($ModifiedFields.Keys -join ', ')"
-            } catch {
-                Write-Host "Error updating user attributes: $_"
-            }
-        } else {
+# If there are changes, apply them
+if ($ModifiedFields.Count -gt 0) {
+    try {
+        Set-ADUser -Instance $ADUser -ErrorAction Stop
+        Write-Host "User with CustomIdentifier '$CustomIdentifier' updated fields: $($ModifiedFields.Keys -join ', ')"
+    } catch {
+        Write-Host "Error updating user attributes: $_"
+    }
+}
+
+# Check if first name, last name, or display name has changed
+$firstNameChanged = $ModifiedFields.ContainsKey("GivenName")
+$lastNameChanged = $ModifiedFields.ContainsKey("sn")
+$displayNameChanged = $ModifiedFields.ContainsKey("DisplayName")
+if ($firstNameChanged -or $lastNameChanged -or $displayNameChanged) {
+    $newCN = $ADUser.GivenName + " " + $ADUser.Surname
+
+    if (-not [string]::IsNullOrWhiteSpace($newCN)) {
+        try {
+            # Perform the rename operation
+            Rename-ADObject -Identity $ADUser.DistinguishedName -NewName $newCN -ErrorAction Stop
+            Write-Host "User with CustomIdentifier '$CustomIdentifier' renamed to '$newCN'"
+        } catch {
+            Write-Host "Error renaming user: $_"
+        }
+    }
+} else {
             Write-Host "User with CustomIdentifier '$CustomIdentifier' already exists in Active Directory. No fields updated."
         }
     } else {
