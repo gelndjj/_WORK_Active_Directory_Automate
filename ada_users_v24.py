@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk, messagebox, filedialog, font
-import sqlite3, csv, os, subprocess, sys, shutil, time, glob, shlex
+import sqlite3, csv, os, subprocess, sys, shutil, time, glob, shlex, datetime
 from faker import Faker
 from tkinter.scrolledtext import ScrolledText
 
@@ -930,8 +930,17 @@ def export_to_csv():
         return
 
     try:
-        # Open a CSV file for writing
-        with open('ad_users_export.csv', 'w', newline='') as csv_file:
+        # Extract the database name without the extension
+        db_name = selected_db.split('.')[0]
+
+        # Get the current date and time in yyyymmdd-hhmmss format
+        current_datetime = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+
+        # Form the CSV file name
+        csv_filename = f"{db_name}_{current_datetime}.csv"
+
+        # Open a CSV file for writing with the new file name
+        with open(csv_filename, 'w', newline='') as csv_file:
             # Create a CSV writer
             csv_writer = csv.writer(csv_file)
 
@@ -955,11 +964,10 @@ def export_to_csv():
             # Close the database connection
             conn.close()
 
-        messagebox.showinfo("Export Complete", f"All records from {selected_db} have been exported to ad_users_export.csv")
+        messagebox.showinfo("Export Complete", f"All records from {selected_db} have been exported to {csv_filename}")
     except sqlite3.Error as e:
         # Handle any database-related errors here
         messagebox.showerror("Error", f"Error exporting records: {e}")
-
 def import_csv_data():
     # Ask the user to select a CSV file for import
     csv_filename = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
@@ -1454,6 +1462,33 @@ def change_password(new_password):
 
     print("Password change completed.")
 
+def toggle_selected_users():
+    # Iterate over selected rows and call the PowerShell script for each user
+    for item in my_tree.selection():
+        custom_identifier = my_tree.item(item, 'values')[15]  # Assuming 'Custom Identifier' is in the 15th column
+
+        if not custom_identifier:
+            print(f"Skipping row {item}: Custom Identifier not found.")
+            continue
+
+        # Construct the PowerShell command to execute the script
+        ps_command = [
+            'powershell.exe',
+            '-File',
+            'toggle_ad_account.ps1',  # The name of your PowerShell script
+            '-customIdentifier',
+            custom_identifier
+        ]
+
+        # Execute the PowerShell script
+        try:
+            result = subprocess.run(ps_command, capture_output=True, text=True, check=True)
+            print(result.stdout)
+        except subprocess.CalledProcessError as e:
+            print(f"Error toggling account for Custom Identifier '{custom_identifier}': {e}")
+
+    print("Account toggle operation completed.")
+
 def get_OU_and_extract():
     # Get the selected OU path CSV from the combobox
     selected_csv = ou_combobox.get()
@@ -1479,6 +1514,102 @@ def get_OU_and_extract():
 
     # Now you can pass the quoted OU value to the PowerShell script and execute it
     extract_ad_to_csv(OU_quoted)
+
+def show_user_ou():
+    selected_items = my_tree.selection()
+    if len(selected_items) != 1:
+        messagebox.showerror("Error", "Please select a single user.")
+        return
+
+    custom_identifier = my_tree.item(selected_items[0], 'values')[15]  # Assuming 'Custom Identifier' is in the 15th column
+
+    ps_command = [
+        'powershell.exe',
+        '-File',
+        'get_user_ou.ps1',
+        '-customIdentifier',
+        custom_identifier
+    ]
+
+    try:
+        result = subprocess.run(ps_command, capture_output=True, text=True, check=True)
+        ou = result.stdout.strip()
+        messagebox.showinfo("User OU", f"The user is in OU: {ou}")
+    except subprocess.CalledProcessError as e:
+        messagebox.showerror("Error", f"Error retrieving OU for Custom Identifier '{custom_identifier}': {e}")
+
+def copy_sam_to_employeeid():
+    selected_items = my_tree.selection()
+    if not selected_items:
+        messagebox.showerror("Error", "Please select at least one user.")
+        return
+
+    success_count = 0
+    error_messages = []
+
+    for item in selected_items:
+        custom_identifier = my_tree.item(item, 'values')[15]  # Assuming 'Custom Identifier' is in the 15th column
+
+        ps_command = [
+            'powershell.exe',
+            '-File',
+            'copy_sam_to_employeeid.ps1',
+            '-customIdentifier',
+            custom_identifier
+        ]
+
+        try:
+            subprocess.run(ps_command, capture_output=True, text=True, check=True)
+            success_count += 1
+        except subprocess.CalledProcessError as e:
+            error_messages.append(f"Error for '{custom_identifier}': {e}")
+
+    # Display results
+    if success_count == len(selected_items):
+        messagebox.showinfo("Operation Completed", "SAMAccountName copied to employeeID for all selected users.")
+    elif success_count > 0:
+        messagebox.showinfo("Partial Completion",
+                            f"SAMAccountName copied to employeeID for {success_count} out of {len(selected_items)} selected users.")
+
+    if error_messages:
+        messagebox.showerror("Errors Encountered", "\n".join(error_messages))
+
+
+def erase_employeeid_for_multiple_users():
+    selected_items = my_tree.selection()
+    if not selected_items:
+        messagebox.showerror("Error", "Please select at least one user.")
+        return
+
+    success_count = 0
+    error_messages = []
+
+    for item in selected_items:
+        custom_identifier = my_tree.item(item, 'values')[15]  # Assuming 'Custom Identifier' is in the 15th column
+
+        ps_command = [
+            'powershell.exe',
+            '-File',
+            'erase_employeeid.ps1',
+            '-customIdentifier',
+            custom_identifier
+        ]
+
+        try:
+            subprocess.run(ps_command, capture_output=True, text=True, check=True)
+            success_count += 1
+        except subprocess.CalledProcessError as e:
+            error_messages.append(f"Error for '{custom_identifier}': {e}")
+
+    # Display results
+    if success_count == len(selected_items):
+        messagebox.showinfo("Operation Completed", "employeeID erased for all selected users.")
+    elif success_count > 0:
+        messagebox.showinfo("Partial Completion",
+                            f"employeeID erased for {success_count} out of {len(selected_items)} selected users.")
+
+    if error_messages:
+        messagebox.showerror("Errors Encountered", "\n".join(error_messages))
 
 def extract_ad_to_csv(OU):
     # Modify the PowerShell script invocation to pass the OU as an argument
@@ -1507,10 +1638,12 @@ def scan_ou_users():
 ad_menu = Menu(my_menu, tearoff=0)
 my_menu.add_cascade(label="AD Commands", menu=ad_menu)
 # Drop down menu
+ad_menu.add_command(label="Where - Selected User OU", command=show_user_ou)
 ad_menu.add_separator()
 ad_menu.add_command(label="Extract OU to CSV - DB Layout", command=get_OU_and_extract)
 ad_menu.add_separator()
-ad_menu.add_command(label="Copy SAM to employeeID", command=get_OU_and_extract)
+ad_menu.add_command(label="Copy SAM to employeeID", command=copy_sam_to_employeeid)
+ad_menu.add_command(label="Erase SAM from employeeID", command=erase_employeeid_for_multiple_users)
 
 # Bind the update_display_name function to the first name and last name entry fields
 fn_entry.bind("<KeyRelease>", lambda event: update_display_name())
@@ -1586,6 +1719,9 @@ edit_script_button.grid(row=1, column=0, padx=10, pady=10, sticky='w')
 
 password_button = ttk.Button(ps_frame, text="Change User Password", style="Custom.TButton", command=enter_new_password)
 password_button.grid(row=2, column=0, padx=10, pady=10, sticky='w')
+
+disable_button = ttk.Button(ps_frame, text="Enable/Disable User(s)", style="Custom.TButton", command=toggle_selected_users)
+disable_button.grid(row=3, column=0, padx=10, pady=10, sticky='w')
 
 create_address_button = ttk.Button(autofill_frame, text="Create Address", style="Custom.TButton", command=create_address_csv)
 create_address_button.grid(row=0, column=1, padx=10, pady=10, sticky='w')
