@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk, messagebox, filedialog, font
-import sqlite3, csv, os, subprocess, sys, shutil, time, glob
+import sqlite3, csv, os, subprocess, sys, shutil, time, glob, shlex
 from faker import Faker
 from tkinter.scrolledtext import ScrolledText
 
@@ -1425,21 +1425,24 @@ def enter_new_password():
 def change_password(new_password):
     # Iterate over selected rows and call the PowerShell script for each user
     for item in my_tree.selection():
-        custom_identifier = my_tree.item(item, 'values')[14]  # Assuming 'Custom Identifier' is in the 15th column
+        custom_identifier = my_tree.item(item, 'values')[15]  # Assuming 'Custom Identifier' is in the 15th column
 
         if not custom_identifier:
             print(f"Skipping row {item}: Custom Identifier not found.")
             continue
 
+        # Quote the new password to handle special characters
+        quoted_new_password = shlex.quote(new_password)
+
         # Construct the PowerShell command to execute the script
         ps_command = [
             'powershell.exe',
             '-File',
-            'change_password.ps1',  # The name of your PowerShell script
+            'change_password.ps1',
             '-customIdentifier',
             custom_identifier,
             '-newPassword',
-            new_password
+            quoted_new_password
         ]
 
         # Execute the PowerShell script
@@ -1450,7 +1453,6 @@ def change_password(new_password):
             print(f"Error changing password for Custom Identifier '{custom_identifier}': {e}")
 
     print("Password change completed.")
-
 
 def get_OU_and_extract():
     # Get the selected OU path CSV from the combobox
