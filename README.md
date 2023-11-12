@@ -62,11 +62,9 @@ Active Directory Automate is a sophisticated application designed to streamline 
 <img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/main.png" alt="Screenshot" width="927" height="852">
 </br>
 </br>
-Basically, the application creates SQL databases where the users information are stored. You can edit, modify or create user information to then synchronize to Active Directory.
+At the heart of Active Directory Automate is its ability to create and manage SQL databases that serve as the repository for user information. With functionality that enables you to add, edit, and modify user details, the application seamlessly synchronizes this data with Active Directory, ensuring a synchronized and up-to-date user management system.</br>
 </br>
-</br>
-The main goal of this project is to save up time and automate the process of handling thousand of users in Active Directory.
-</br>
+The principal aim of this project is to significantly reduce the administrative overhead associated with managing thousands of users in Active Directory</br>
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -141,6 +139,10 @@ The main goal of this project is to save up time and automate the process of han
 - **Description**: Initiates a prompt to change the password for a single or multiple selected users from the database then synchronize the changes to Active Directory.
 - **Usage**: Select one or many user(s) and click this to begin the password change process.
 
+### Enable/Disable User(s)
+- **Description**: Makes the account of the selected user(s) Enable if Disable and Disable if Enable.
+- **Usage**: Select one or many user(s) and click this to begin the enable/disable account process.
+
 ## Python Commands
 
 ### Add One Fake Record
@@ -152,7 +154,7 @@ The main goal of this project is to save up time and automate the process of han
 - **Usage**: Click this to insert a batch of dummy records.
 
 ### Export Database to CSV
-- **Description**: Exports the entire database to a CSV file.
+- **Description**: Exports the entire database to a CSV file named 'database_name'-YYYYMMDD-HH-MM-SS.
 - **Usage**: Use this button to create a CSV backup or for data analysis purposes.
 
 ### Import Record from CSV
@@ -164,15 +166,15 @@ The main goal of this project is to save up time and automate the process of han
 ### Create New Database
 - **Description**: Initializes a new, empty database for storing user records.
 - **Usage**: Click this to set up a fresh database, typically used when starting from scratch.
-- *IMPORTANT*: Place the database at the root of the application.
-- 
+- **IMPORTANT**: Place the database at the root of the application.
+
 ### Browse Database
 - **Description**: Opens a file dialog to explore and manage the database files.
 - **Usage**: Use this to locate and open an existing database file.
-- **Detail**: Copies the selected database to root app.
-- 
+- **Detail**: Copies the selected database at the root of the application.
+
 ### Backup Current Database
-- **Description**: Creates a backup copy of the current database.
+- **Description**: Creates a backup copy of the current database and name it 'database_name'-YYYYMMDD-HH-MM-SS.
 - **Usage**: Click this to ensure you have a recent backup of your user data.
 
 ## Organisation Unit Management
