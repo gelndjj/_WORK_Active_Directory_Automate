@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbols xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Class Class="#1=T:[CodeOwls.PowerShell.Provider]CodeOwls.PowerShell.Provider.Attributes.LogProviderToSession">
+    <Instance Declaration="#2=A:CodeOwls.PowerShell.Provider" ForwardRef="true" Id="992d0e54c8566662">
+      <Target Target="#3=M:[CodeOwls.PowerShell.SQLite.Provider]CodeOwls.PowerShell.SQLite.Provider.SQLiteProvider::NewDriveDynamicParameters()">
+        <JoinPoint Description="#4=Wrapped by advice(s) OnEntry, OnException, OnExit" />
+      </Target>
+      <Target Target="#5=M:[CodeOwls.PowerShell.SQLite.Provider]CodeOwls.PowerShell.SQLite.Provider.SQLiteProvider::NewDrive(System.Management.Automation.PSDriveInfo)">
+        <JoinPoint Description="#4" />
+      </Target>
+      <Target Target="#6=M:[CodeOwls.PowerShell.SQLite.Provider]CodeOwls.PowerShell.SQLite.Provider.SQLiteProvider::RemoveDrive(System.Management.Automation.PSDriveInfo)">
+        <JoinPoint Description="#4" />
+      </Target>
+      <Target Target="#7=M:[CodeOwls.PowerShell.SQLite.Provider]CodeOwls.PowerShell.SQLite.Provider.SQLiteProvider::get_PathNodeProcessor()">
+        <JoinPoint Description="#4" />
+      </Target>
+    </Instance>
+  </Class>
+  <Class Class="#8=T:[CodeOwls.PowerShell.Provider]CodeOwls.PowerShell.Provider.Attributes.ManageSessionAttribute">
+    <Instance Declaration="#2" ForwardRef="true" Id="992d0e54716b5fcb">
+      <Target Target="#3">
+        <JoinPoint Description="#9=Intercepted by OnInvoke" Ordinal="7" />
+      </Target>
+      <Target Target="#5">
+        <JoinPoint Description="#9" Ordinal="7" />
+      </Target>
+      <Target Target="#6">
+        <JoinPoint Description="#9" Ordinal="7" />
+      </Target>
+      <Target Target="#7">
+        <JoinPoint Description="#9" Ordinal="7" />
+      </Target>
+    </Instance>
+  </Class>
+  <Class Class="#10=T:[CodeOwls.PowerShell.Provider]CodeOwls.PowerShell.Provider.Attributes.ManagePSTransactionAttribute">
+    <Instance Declaration="#2" ForwardRef="true" Id="992d0e545247b110">
+      <Target Target="#3">
+        <JoinPoint Description="#9" Ordinal="4" />
+      </Target>
+      <Target Target="#5">
+        <JoinPoint Description="#9" Ordinal="4" />
+      </Target>
+      <Target Target="#6">
+        <JoinPoint Description="#9" Ordinal="4" />
+      </Target>
+      <Target Target="#7">
+        <JoinPoint Description="#9" Ordinal="4" />
+      </Target>
+    </Instance>
+  </Class>
+</Symbols>
