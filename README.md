@@ -88,9 +88,119 @@ The main goal of this project is to save up time and automate the process of han
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Usage Documentation
 
-Pending
+## Table of Contents
+- [Record Management](#record-management)
+- [PowerShell Commands](#powershell-commands)
+- [Python Commands](#python-commands)
+- [Database Storing](#database-storing)
+- [Organisation Unit Management](#organisation-unit-management)
+- [Auto Filling](#auto-filling)
+
+## Record Management
+
+### Add Record
+- **Description**: Creates a new user record in the application with the details provided in the input fields.
+- **Usage**: Complete the input fields under 'Record' and click this button to save a new record.
+
+### Update Record
+- **Description**: Modifies an existing user record.
+- **Usage**: After editing details in the 'Record' section, click this button to apply the updates.
+
+### Clear Entry Boxes
+- **Description**: Clears all the input fields in the 'Record' section.
+- **Usage**: Click this to reset the form and prepare for new input.
+
+### Reassign IDs
+- **Description**: Automatically reassigns IDs to all records in the database to maintain a sequential order.
+- **Usage**: Use this button to reorganize the ID sequence after record deletions.
+
+### Delete Duplicates
+- **Description**: Scans the database for duplicate records and removes them.
+- **Usage**: Click this button to clean up the database by removing duplicates.
+
+### Remove Record
+- **Description**: Deletes the selected user record from the database.
+- **Usage**: Select a record and use this button to permanently delete it from the database.
+
+### Remove All Records
+- **Description**: Deletes all records from the database.
+- **Usage**: Use this with caution; it will completely empty the database of user records.
+
+## PowerShell Commands
+
+### Sync Database to AD
+- **Description**: Synchronizes the current database entries with Active Directory. The selected databsse in the DataBase Storing section will be synchronized. 
+- **Usage**: Click this to update Active Directory with the information from the application database.
+
+### Edit Sync DB Script
+- **Description**: Opens the script used for database synchronization for editing.
+- **Usage**: Click this if you need to modify the PowerShell script parameters or behavior.
+
+### Change User Password
+- **Description**: Initiates a prompt to change the password for a user in Active Directory.
+- **Usage**: Select a user and click this to begin the password change process.
+
+## Python Commands
+
+### Add One Fake Record
+- **Description**: Inserts a placeholder record with generated information into the database.
+- **Usage**: Click this to add a single dummy record for testing or demonstration purposes.
+
+### Add Multiple Fake Records
+- **Description**: Generates and adds multiple placeholder records to the database.
+- **Usage**: Click this to insert a batch of dummy records.
+
+### Export Database to CSV
+- **Description**: Exports the entire database to a CSV file.
+- **Usage**: Use this button to create a CSV backup or for data analysis purposes.
+
+### Import Record from CSV
+- **Description**: Imports records into the database from a CSV file.
+- **Usage**: Click this and select a CSV file to upload and add records from it to the database.
+
+## Database Storing
+
+### Create New Database
+- **Description**: Initializes a new, empty database for storing user records.
+- **Usage**: Click this to set up a fresh database, typically used when starting from scratch.
+- *IMPORTANT*: Place the database at the root of the application.
+- 
+### Browse Database
+- **Description**: Opens a file dialog to explore and manage the database files.
+- **Usage**: Use this to locate and open an existing database file.
+- **Detail**: Copies the selected database to root app.
+- 
+### Backup Current Database
+- **Description**: Creates a backup copy of the current database.
+- **Usage**: Click this to ensure you have a recent backup of your user data.
+
+## Organisation Unit Management
+
+### Select Organisation Unit
+- **Description**: Allows the selection of an organizational unit from Active Directory to manage.
+- **Usage**: Click to display and select from available organizational units.
+
+### Create Organisation Unit Path
+- **Description**: Initiates a prompt to set up an existing organizational unit path in order to synchronize with Active Directory.
+- **Usage**: Click this after specifying the details to create a new organizational path.
+
+### Scan AD OU's Users
+- **Description**: Scans Active Directory to find the Organizational Units (OUs) where users are already present.
+- **Usage**: Click this button to perform a search in Active Directory and retrieve a list of OUs that contain user accounts. This can be useful for auditing purposes or to ensure users are correctly organized within AD.
+- **Expected Outcome**: After scanning, the application will display the OUs along with associated user details from Active Directory.
+- 
+## Auto Filling
+
+### Create Address
+- **Description**: Automatically generates and fills in an address for the selected record.
+- **Usage**: Select a user record and click this to populate the address fields.
+
+### Create SAM@domain
+- **Description**: Constructs and fills in the SAM account name for a user based on the domain.
+- **Usage**: With a user record selected, click this to auto-generate the SAM account name.
+
 
 <!-- GETTING STARTED -->
 ## Standalone APP
