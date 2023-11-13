@@ -2,12 +2,14 @@
 param(
     [string]$OUPath
 )
+
 # Ensure you have the ActiveDirectory module installed.
 Import-Module ActiveDirectory
 
-# Check if the parameter is provided, else use a default value
+# Check if the parameter is provided, else display an error message
 if (-not $OUPath) {
-    $OUPath = "OU=Users,OU=Administration,DC=mybusiness,DC=local"
+    Write-Host "Please select a valid Organization Unit"
+    exit
 }
 
 # Query users from the given OU
