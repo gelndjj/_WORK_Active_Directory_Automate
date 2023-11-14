@@ -69,21 +69,6 @@ The principal aim of this project is to significantly reduce the administrative 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Built With
-
-<a href="https://www.python.org">
-<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/py_icon.png" alt="Icon" width="32" height="32">
-</a>
-&nbsp
-<a href="https://customtkinter.tomschimansky.com">
-<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/ctk_icon.png" alt="Icon" width="32" height="32">
-</a>
-&nbsp
-<a href="https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.3">
-<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/ps_icon.png" alt="Icon" width="32" height="32">
-</a>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- USAGE EXAMPLES -->
 # Usage Documentation
 
@@ -191,7 +176,7 @@ The principal aim of this project is to significantly reduce the administrative 
 - **Description**: Scans Active Directory to find the Organizational Units (OUs) where users are already present.
 - **Usage**: Click this button to perform a search in Active Directory and retrieve a list of OUs that contain user accounts. This can be useful for auditing purposes or to ensure users are correctly organized within AD.
 - **Expected Outcome**: After scanning, the application will display the OUs along with associated user details from Active Directory.
-- 
+
 ## Auto Filling
 
 ### Create Address
@@ -232,7 +217,21 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Built With
 
+<a href="https://www.python.org">
+<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/py_icon.png" alt="Icon" width="32" height="32">
+</a>
+&nbsp
+<a href="https://customtkinter.tomschimansky.com">
+<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/ctk_icon.png" alt="Icon" width="32" height="32">
+</a>
+&nbsp
+<a href="https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.3">
+<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/ps_icon.png" alt="Icon" width="32" height="32">
+</a>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+    
 
 <!-- LICENSE -->
 ## License
