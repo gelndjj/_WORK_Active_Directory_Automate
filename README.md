@@ -15,7 +15,7 @@
     <img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/image0.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Active Directory Automate</h3>
+  <h3 align="center">Active Directory Automate (Windows Server Machine)</h3>
 
   <p align="center">
     A Python application to handle Active Directory tasks
