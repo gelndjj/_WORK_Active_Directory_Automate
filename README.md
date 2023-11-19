@@ -69,6 +69,17 @@ The principal aim of this project is to significantly reduce the administrative 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
+
+# Usage 
+
+1. Launching the Application:
++ Critical Note: The executable (EXE) file must be launched directly on the Windows Server machine where Active Directory services are hosted. This is essential for the tool to function correctly and securely interact with Active Directory.
++ Do not attempt to run the executable from client machines. Doing so may result in improper functionality and security risks.
+2. Performing Tasks:
++ After launching the application on the server, follow the on-screen instructions to perform various Active Directory management tasks.
++ Security and Compliance:
+Ensure that you have the necessary permissions and comply with your organization's IT policies when using this tool on the server.
+
 # Usage Documentation
 
 ## Table of Contents
