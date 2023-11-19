@@ -51,11 +51,10 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/image_1.png" alt="Logo" width="128" height="128">
+<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/image0.png" alt="Logo" width="128" height="128">
 </br>
 Active Directory Automate is a sophisticated application designed to streamline the process of user management within Active Directory (AD). Born out of the necessity to eliminate the repetitive and manual task of creating AD users, this tool stands as a testament to the power of automation in the IT administration field.</br> 
 </br>
