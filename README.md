@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/gelndjj/Active_Directory_Automate">
-    <img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/image_1.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/image0.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Active Directory Automate</h3>
