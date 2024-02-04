@@ -58,7 +58,7 @@
 </br>
 Active Directory Automate is a sophisticated application designed to streamline the process of user management within Active Directory (AD). Born out of the necessity to eliminate the repetitive and manual task of creating AD users, this tool stands as a testament to the power of automation in the IT administration field.</br> 
 </br>
-<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/main_win.png" alt="Screenshot" width="927" height="852">
+<img src="https://github.com/gelndjj/Active_Directory_Automate/blob/main/resources/main_win.png" alt="Screenshot" width="615" height="431">
 </br>
 </br>
 At the heart of Active Directory Automate is its ability to create and manage SQL databases that serve as the repository for user information. With functionality that enables you to add, edit, and modify user details, the application seamlessly synchronizes this data with Active Directory, ensuring a synchronized and up-to-date user management system.</br>
